@@ -954,7 +954,11 @@ const GuestGuide = ({ onBack, onNavigate, activeCrisis, roomNumber, floorNumber 
 
         {/* Action Button */}
         <button 
-          onClick={() => { updateRoomStatus(roomNumber, { occupancyStatus: 'evacuated' }); onBack(); }}
+          onClick={async () => { 
+            await updateRoomStatus(roomNumber, { occupancyStatus: 'evacuated' }); 
+            await clearAllCrises();
+            onBack(); 
+          }}
           className="mt-4 w-full py-6 bg-[#001c10] text-[#10b981] rounded-[2rem] font-headline font-black text-xl tracking-tighter italic flex items-center justify-center gap-4 hover:brightness-110 active:scale-95 transition-all shadow-xl shadow-emerald-950/20"
         >
           <CheckCircle className="w-6 h-6" />
