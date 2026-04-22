@@ -191,6 +191,29 @@ export const seedDatabase = async () => {
     for (const l of logs) {
       await addDoc(collection(db, 'logs'), { ...l, timestamp: serverTimestamp() });
     }
+
+    const initialRooms = [
+      { id: '400', roomNumber: '400', floor: 4, occupancyStatus: 'unknown' },
+      { id: '401', roomNumber: '401', floor: 4, occupancyStatus: 'unknown' },
+      { id: '402', roomNumber: '402', floor: 4, occupancyStatus: 'unknown' },
+      { id: '404', roomNumber: '404', floor: 4, occupancyStatus: 'unknown' },
+      { id: '405', roomNumber: '405', floor: 4, occupancyStatus: 'unknown' },
+      { id: '406', roomNumber: '406', floor: 4, occupancyStatus: 'unknown' },
+      { id: '407', roomNumber: '407', floor: 4, occupancyStatus: 'unknown' },
+      { id: '408', roomNumber: '408', floor: 4, occupancyStatus: 'unknown' },
+      { id: '409', roomNumber: '409', floor: 4, occupancyStatus: 'unknown' },
+      { id: '410', roomNumber: '410', floor: 4, occupancyStatus: 'unknown' },
+      { id: '412', roomNumber: '412', floor: 4, occupancyStatus: 'occupied' },
+      { id: '413', roomNumber: '413', floor: 4, occupancyStatus: 'unknown' },
+      { id: '414', roomNumber: '414', floor: 4, occupancyStatus: 'unknown' },
+      { id: '415', roomNumber: '415', floor: 4, occupancyStatus: 'unknown' },
+    ];
+
+    for (const r of initialRooms) {
+      const { id, ...roomData } = r;
+      await setDoc(doc(db, 'rooms', id), roomData);
+    }
+
     console.log("Database seeded successfully.");
   } catch (error) {
     console.error("Database seed failed:", error);
