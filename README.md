@@ -115,17 +115,17 @@ NexusResponse is built on a modern, decoupled cloud architecture utilizing Googl
 
 ```mermaid
 graph TD
-    subgraph Client Tier (User Interfaces)
+    subgraph client_tier["Client Tier (User Interfaces)"]
         AdminHub["Operations Control Hub / Sentinel UI<br/>(React & Tailwind CSS)"]
         GuestPortal["Guest Guide / SafeStay Portal<br/>(React & Framer Motion)"]
     end
 
-    subgraph Serverless & Cloud Infrastructure (GCP)
+    subgraph cloud_infra["Serverless & Cloud Infrastructure (GCP)"]
         Auth["Firebase Authentication<br/>(Anonymous Guest Auth)"]
         Firestore[("Firebase Firestore<br/>(Real-Time Database)")]
     end
 
-    subgraph Generative AI Engine
+    subgraph ai_engine["Generative AI Engine"]
         Gemini["Google Gemini API & Vertex AI<br/>(Evacuation Route Generator)"]
     end
 
